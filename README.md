@@ -1,4 +1,5 @@
 # What's this
+When we upload a photo to Instagram, we have to think about aspect ratio...  
 From now on, you don't need to worry about your photo's aspect ratio!  
 You can just upload your photo, in the original ratio.  
 And of course, margins are beautiful, good photo needs proper margins.
