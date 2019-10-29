@@ -30,5 +30,5 @@ Portrait ratio.
 <img src="https://github.com/ykhr53/insta-margin/blob/images/port.png" width="650">
   
 
-Thanks, all photos are mine 😊  
+Thanks, all sample photos are mine 😊  
 https://www.flickr.com/people/yukihira_fl/
