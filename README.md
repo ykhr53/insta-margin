@@ -21,13 +21,13 @@ For now, as Instagram's maximum upload size is 1080 x 1080, the default `baseSiz
 # Sample
 Landscape ratio.  
 
-<img src="https://github.com/ykhr53/insta-margin/blob/images/land.png" width="800">
+<img src="https://github.com/ykhr53/insta-margin/blob/images/land.png" width="650">
   
   
-  
+
 Portrait ratio.  
 
-<img src="https://github.com/ykhr53/insta-margin/blob/images/port.png" width="800">
+<img src="https://github.com/ykhr53/insta-margin/blob/images/port.png" width="650">
   
 
 Thanks, all photos are mine 😊  
