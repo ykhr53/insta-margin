@@ -19,7 +19,16 @@ You can configure `baseSize` and `marginPercent`.
 For now, as Instagram's maximum upload size is 1080 x 1080, the default `baseSize` value follows this limit.
 
 # Sample
+Landscape ratio.  
 
+<img src="https://github.com/ykhr53/insta-margin/blob/images/land.png" width="800">
+  
+  
+  
+Portrait ratio.  
+
+<img src="https://github.com/ykhr53/insta-margin/blob/images/port.png" width="800">
+  
 
 Thanks, all photos are mine 😊  
 https://www.flickr.com/people/yukihira_fl/
