@@ -11,7 +11,7 @@ insta-margin $ go build insta.go
 insta-margin $ ./insta landscape.jpg 
 ```
 
-Also, you can specify a directory with `-d` option.
+Also, you can specify a directory with `-d` option.  
 All photos inside the specified directory will be converted.
 
 ```
