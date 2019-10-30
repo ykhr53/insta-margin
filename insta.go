@@ -29,6 +29,9 @@ func main() {
 	flag.Parse()
 	if *boolOpt {
 		inputPath := flag.Arg(0)
+		if inputPath[len(inputPath)-1:] != "/" {
+			inputPath += "/"
+		}
 		files, _ := ioutil.ReadDir(inputPath)
 		for _, f := range files {
 			inputImagePath := inputPath + f.Name()
