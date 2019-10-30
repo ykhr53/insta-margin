@@ -11,6 +11,13 @@ insta-margin $ go build insta.go
 insta-margin $ ./insta landscape.jpg 
 ```
 
+Also, you can specify a directory with `-d` option.
+All photos inside the specified directory will be converted.
+
+```
+insta-margin $ ./insta -d photos/
+```
+
 Output file has random base64 suffix, don't worry about overwrite.
 
 # Configuration

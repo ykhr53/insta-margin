@@ -10,6 +10,7 @@ import (
 	_ "image/jpeg"
 	"image/png"
 	_ "image/png"
+	"io/ioutil"
 	"math/rand"
 	"os"
 	"time"
@@ -17,14 +18,29 @@ import (
 	xdraw "golang.org/x/image/draw"
 )
 
-func main() {
-	// Base square size length
-	const baseSize int = 1080
-	// Parcentage of margin
-	const marginPercent int = 80
+// Base square size length
+const baseSize int = 1080
 
+// Parcentage of margin
+const marginPercent int = 80
+
+func main() {
+	var boolOpt = flag.Bool("d", false, "resize all images inside the specified directory")
 	flag.Parse()
-	inputImagePath := flag.Arg(0)
+	if *boolOpt {
+		inputPath := flag.Arg(0)
+		files, _ := ioutil.ReadDir(inputPath)
+		for _, f := range files {
+			inputImagePath := inputPath + f.Name()
+			resize(inputImagePath)
+		}
+	} else {
+		inputImagePath := flag.Arg(0)
+		resize(inputImagePath)
+	}
+}
+
+func resize(inputImagePath string) {
 	outName := "output-" + suffix(6) + ".png"
 
 	inputImageFile, err := os.Open(inputImagePath)
