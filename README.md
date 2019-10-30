@@ -18,7 +18,7 @@ All photos inside the specified directory will be converted.
 insta-margin $ ./insta -d photos/
 ```
 
-Output file has random base64 suffix, don't worry about overwrite.
+Output file has random base62 suffix, don't worry about overwrite.
 
 # Configuration
 You can configure `baseSize` and `marginPercent`.  

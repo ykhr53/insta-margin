@@ -89,7 +89,7 @@ func resize(inputImagePath string) {
 	png.Encode(f, baseImage)
 }
 
-// Output file has random base64 suffix
+// Output file has random base62 suffix
 func suffix(n int) string {
 	rand.Seed(time.Now().UnixNano())
 	letterBytes := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
