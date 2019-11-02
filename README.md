@@ -16,7 +16,7 @@ Output file has random base62 suffix, don't worry about overwrite.
 ## Options
 ### -p
 You can specify a white margin percentage by `-p` option.  
-Default value is defined as `marginPercent`, and it is `80`.
+Default value is defined as `defaultMarginPercent`, and it is `80`.
 
 ### -d
 Also, you can specify a directory with `-d` option.  
@@ -27,7 +27,7 @@ insta-margin $ ./insta -d photos/
 ```
 
 # Configuration
-You can configure `baseSize` and `marginPercent`.  
+You can configure `baseSize` and `defaultMarginPercent`.  
 For now, as Instagram's maximum upload size is 1080 x 1080, the default `baseSize` value follows this limit.
 
 # Sample
