@@ -11,14 +11,20 @@ insta-margin $ go build insta.go
 insta-margin $ ./insta landscape.jpg 
 ```
 
+Output file has random base62 suffix, don't worry about overwrite.
+
+## Options
+### -p
+You can specify a white margin percentage by `-p` option.  
+Default value is defined as `marginPercent`, and it is `80`.
+
+### -d
 Also, you can specify a directory with `-d` option.  
 All photos inside the specified directory will be converted.
 
 ```
 insta-margin $ ./insta -d photos/
 ```
-
-Output file has random base62 suffix, don't worry about overwrite.
 
 # Configuration
 You can configure `baseSize` and `marginPercent`.  
