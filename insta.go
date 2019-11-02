@@ -22,12 +22,15 @@ import (
 const baseSize int = 1080
 
 // Parcentage of margin
-const marginPercent int = 80
+const defaultMarginPercent int = 80
 
 func main() {
-	var boolOpt = flag.Bool("d", false, "resize all images inside the specified directory")
+	var percentOpt = flag.Int("p", defaultMarginPercent, "set the parcent of margin")
+	var dirOpt = flag.Bool("d", false, "resize all images inside the specified directory")
 	flag.Parse()
-	if *boolOpt {
+
+	marginPercent := *percentOpt
+	if *dirOpt {
 		inputPath := flag.Arg(0)
 		if inputPath[len(inputPath)-1:] != "/" {
 			inputPath += "/"
@@ -35,15 +38,15 @@ func main() {
 		files, _ := ioutil.ReadDir(inputPath)
 		for _, f := range files {
 			inputImagePath := inputPath + f.Name()
-			resize(inputImagePath)
+			resize(inputImagePath, marginPercent)
 		}
 	} else {
 		inputImagePath := flag.Arg(0)
-		resize(inputImagePath)
+		resize(inputImagePath, marginPercent)
 	}
 }
 
-func resize(inputImagePath string) {
+func resize(inputImagePath string, marginPercent int) {
 	outName := "output-" + suffix(6) + ".png"
 
 	inputImageFile, err := os.Open(inputImagePath)
