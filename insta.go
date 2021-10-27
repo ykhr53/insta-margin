@@ -9,7 +9,6 @@ import (
 	_ "image/gif"
 	_ "image/jpeg"
 	"image/png"
-	_ "image/png"
 	"io/ioutil"
 	"math/rand"
 	"os"
@@ -19,7 +18,8 @@ import (
 )
 
 // Base square size length
-const baseSize int = 1080
+const HEIGHT int = 1080
+const WIDTH int = 1080
 
 // Parcentage of margin
 const defaultMarginPercent int = 80
@@ -61,9 +61,9 @@ func resize(inputImagePath string, marginPercent int) {
 	}
 
 	// Base image creation
-	baseImage := image.NewRGBA(image.Rect(0, 0, baseSize, baseSize))
-	for i := 0; i < baseSize; i++ {
-		for j := 0; j < baseSize; j++ {
+	baseImage := image.NewRGBA(image.Rect(0, 0, WIDTH, HEIGHT))
+	for i := 0; i < HEIGHT; i++ {
+		for j := 0; j < WIDTH; j++ {
 			baseImage.Set(j, i, color.RGBA{255, 255, 255, 255})
 		}
 	}
@@ -73,10 +73,10 @@ func resize(inputImagePath string, marginPercent int) {
 	var newX, newY int
 
 	if inputRect.Dx() > inputRect.Dy() {
-		newX = baseSize * marginPercent / 100
+		newX = WIDTH * marginPercent / 100
 		newY = inputRect.Dy() * newX / inputRect.Dx()
 	} else {
-		newY = baseSize * marginPercent / 100
+		newY = HEIGHT * marginPercent / 100
 		newX = inputRect.Dx() * newY / inputRect.Dy()
 	}
 
@@ -85,7 +85,7 @@ func resize(inputImagePath string, marginPercent int) {
 
 	// Scale and paste
 	xdraw.CatmullRom.Scale(resizedImage, newSize, inputImage, inputRect, draw.Over, nil)
-	draw.Draw(baseImage, baseImage.Rect, resizedImage, image.Point{-1 * (baseSize - newX) / 2, -1 * (baseSize - newY) / 2}, draw.Over)
+	draw.Draw(baseImage, baseImage.Rect, resizedImage, image.Point{-1 * (WIDTH - newX) / 2, -1 * (HEIGHT - newY) / 2}, draw.Over)
 
 	f, _ := os.OpenFile(outName, os.O_WRONLY|os.O_CREATE, 0600)
 	defer f.Close()
