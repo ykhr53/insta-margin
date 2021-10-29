@@ -9,15 +9,15 @@ import (
 	_ "image/gif"
 	_ "image/jpeg"
 	"image/png"
-	"io/ioutil"
 	"math/rand"
 	"os"
+	"strings"
 	"time"
 
 	xdraw "golang.org/x/image/draw"
 )
 
-// Base square size length
+// Base picture size
 const HEIGHT int = 1080
 const WIDTH int = 1080
 
@@ -32,13 +32,15 @@ func main() {
 	marginPercent := *percentOpt
 	if *dirOpt {
 		inputPath := flag.Arg(0)
-		if inputPath[len(inputPath)-1:] != "/" {
+		if !strings.HasSuffix(inputPath, "/") {
 			inputPath += "/"
 		}
-		files, _ := ioutil.ReadDir(inputPath)
+		files, _ := os.ReadDir(inputPath)
 		for _, f := range files {
-			inputImagePath := inputPath + f.Name()
-			resize(inputImagePath, marginPercent)
+			if isImage(f.Name()) {
+				inputImagePath := inputPath + f.Name()
+				resize(inputImagePath, marginPercent)
+			}
 		}
 	} else {
 		inputImagePath := flag.Arg(0)
@@ -101,4 +103,8 @@ func suffix(n int) string {
 		b[i] = letterBytes[rand.Int63()%int64(len(letterBytes))]
 	}
 	return string(b)
+}
+
+func isImage(s string) bool {
+	return strings.HasSuffix(s, ".png") || strings.HasSuffix(s, ".jpg") || strings.HasSuffix(s, ".jpeg")
 }
