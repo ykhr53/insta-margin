@@ -70,7 +70,7 @@ func resize(inputImagePath string, marginPercent int) {
 		}
 	}
 
-	// Resize the input image according as the longest side
+	// Resize the input image based on aspect ratio
 	inputRect := inputImage.Bounds()
 	var newX, newY int
 
@@ -85,7 +85,7 @@ func resize(inputImagePath string, marginPercent int) {
 	newSize := image.Rect(0, 0, newX, newY)
 	resizedImage := image.NewRGBA(newSize)
 
-	// Scale and paste
+	// Scale and paste original photo
 	xdraw.CatmullRom.Scale(resizedImage, newSize, inputImage, inputRect, draw.Over, nil)
 	draw.Draw(baseImage, baseImage.Rect, resizedImage, image.Point{-1 * (WIDTH - newX) / 2, -1 * (HEIGHT - newY) / 2}, draw.Over)
 
@@ -94,7 +94,7 @@ func resize(inputImagePath string, marginPercent int) {
 	png.Encode(f, baseImage)
 }
 
-// Output file has random base62 suffix
+// Output file should have random base62 suffix
 func suffix(n int) string {
 	rand.Seed(time.Now().UnixNano())
 	letterBytes := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -105,6 +105,7 @@ func suffix(n int) string {
 	return string(b)
 }
 
+// Velify file format
 func isImage(s string) bool {
 	return strings.HasSuffix(s, ".png") || strings.HasSuffix(s, ".jpg") || strings.HasSuffix(s, ".jpeg")
 }
