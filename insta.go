@@ -70,11 +70,11 @@ func resize(inputImagePath string, marginPercent int) {
 		}
 	}
 
-	// Resize the input image based on aspect ratio
+	// Resize the input image based on the edge ratio
 	inputRect := inputImage.Bounds()
 	var newX, newY int
 
-	if inputRect.Dx() > inputRect.Dy() {
+	if inputRect.Dx()/WIDTH > inputRect.Dy()/HEIGHT {
 		newX = WIDTH * marginPercent / 100
 		newY = inputRect.Dy() * newX / inputRect.Dx()
 	} else {
